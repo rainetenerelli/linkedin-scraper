@@ -35,7 +35,6 @@ driver.get('https://www.linkedin.com/in/rainetenerelli/')
 
 sel = Selector(text=driver.page_source)
 
-#gets the name of the connection
 name = sel.xpath('//*[starts-with(@class, "inline t-24 t-black t-normal break-words")]/text()').extract_first()
 name = name.strip()
 
@@ -45,15 +44,8 @@ job = job.strip()
 currentWorkplace = sel.xpath('//*[starts-with(@class, "text-align-left ml2 t-14 t-black t-bold full-width lt-line-clamp lt-line-clamp--multi-line ember-view")]/text()').extract_first()
 currentWorkplace = currentWorkplace.strip()
 
-
-#email = sel.xpath('//section[contains(@class, 'measure-tab') and contains(.//span, 'someText')]').extract_first()
-
-
-website = sel.xpath('//*[starts-with(@class, "pv-contact-info__contact-type ci-websites")]/text()').getall()
+email = sel.xpath("//*[starts-with(@class,'pv-contact-info__contact-type ci-email')]/ul/*/*/a").getAttribute('href')
+website = sel.xpath("//*[starts-with(@class,'pv-contact-info__contact-type ci-websites')]/ul/*/*/a").getAttribute('href')
 
 url = driver.current_url
 
-
-company = sel.xpath('//*[starts-with(@class, 
-"pv-top-card-v2-section__entity-name pv-top-card-v2-section__company-name")]/text()').extract_first()
- print company
