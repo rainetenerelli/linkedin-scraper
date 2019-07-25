@@ -44,8 +44,15 @@ job = job.strip()
 currentWorkplace = sel.xpath('//*[starts-with(@class, "text-align-left ml2 t-14 t-black t-bold full-width lt-line-clamp lt-line-clamp--multi-line ember-view")]/text()').extract_first()
 currentWorkplace = currentWorkplace.strip()
 
-email = sel.xpath("//*[starts-with(@class,'pv-contact-info__contact-type ci-email')]/ul/*/*/a").getAttribute('href')
-website = sel.xpath("//*[starts-with(@class,'pv-contact-info__contact-type ci-websites')]/ul/*/*/a").getAttribute('href')
-
 url = driver.current_url
+
+contact = element = driver.find_element_by_xpath('//*[@id="ember71"]')
+contact.click()
+sleep(0.5)
+sel2 = Selector(text=driver.page_source)
+
+
+email = sel.xpath("//*[starts-with(@class,'pv-contact-info__contact-type ci-email')]/ul/*/*/a").get()
+website = sel2.xpath("//*[starts-with(@class,'pv-contact-info__contact-type ci-websites')]/ul/*/*/a").get()
+
 
